@@ -7,9 +7,13 @@ import os
 import pandas
 
 # create variables with the folder names for each folder
-train_img = os.listdir('./train_image') #assuming folder where training images are saved is named as 'image'. change folder path if different
-lbl = os.listdir('./label') #assuming folder where masks images are saved is named as 'label'. change folder path if different.
-test_img = os.listdir('./test_image') #assuming folder where test images are saved is named as 'test_image'. change folder path if different.
+## assuming folder where training images are saved is named as 'image'. change folder path if different
+train_img = [os.path.join(r,file) for r,d,f in os.walk("C:/Users/gchaudhuri/jupyternb/solaris/test_gc/train_image") for file in f] 
+## assuming folder where masks images are saved is named as 'label'. change folder path if different.
+lbl = [os.path.join(r,file) for r,d,f in os.walk("C:/Users/gchaudhuri/jupyternb/solaris/test_gc/label") for file in f]
+## assuming folder where test images are saved is named as 'test_image'. change folder path if different.
+test_img = [os.path.join(r,file) for r,d,f in os.walk("C:/Users/gchaudhuri/jupyternb/solaris/test_gc/test_image") for file in f] 
+
 
 #Create an empty dataframe
 df_train= pd.DataFrame()
