@@ -7,15 +7,19 @@ import os
 import pandas
 
 # create variables with the folder names for each folder
-img = os.listdir('./image') #assuming folder where training images are saved is named as 'image'. change folder path if different
+train_img = os.listdir('./train_image') #assuming folder where training images are saved is named as 'image'. change folder path if different
 lbl = os.listdir('./label') #assuming folder where masks images are saved is named as 'label'. change folder path if different.
+test_img = os.listdir('./test_image') #assuming folder where test images are saved is named as 'test_image'. change folder path if different.
 
 #Create an empty dataframe
-df= pd.DataFrame()
+df_train= pd.DataFrame()
+df_test=pd.DataFrame()
 
 # Assign new columns as each folder list
-df['image'] = img
-df['label'] = lbl
+df_train['image'] = train_img
+df_train['label'] = lbl
+df_test['image']=test_img
 
 # Save it as csv
-df.to_csv('training.csv', index=False)
+df_train.to_csv('training_df.csv', index=False)
+df_test.to_csv('test_df.csv', index=False)
